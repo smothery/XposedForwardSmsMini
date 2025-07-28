@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+                     tools:ignore="QueryAllPackagesPermission"/>
+
+    <application
+        android:name="com.xmhzj.xpForwardSmsMini.ui.app.ForwardSmsApplication"
+        android:icon="@mipmap/ic_launcher"
+        android:label="短信转发mini(Xposed)"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
+
+        <!-- xposed module configuration -->
+        <meta-data
+            android:name="xposedmodule"
+            android:value="true"/>
+        <meta-data
+            android:name="xposeddescription"
+            android:value="短信转发mini"/>
+        <meta-data
+            android:name="xposedminversion"
+            android:value="30"/>
+        <meta-data
+            android:name="xposedscope"
+            android:resource="@array/xposed_scope"/>
+    </application>
+
+</manifest>
