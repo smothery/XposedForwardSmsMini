@@ -9,17 +9,11 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.xmhzj.xpForwardSmsMini.common.utils.SmsMessageUtils;
 
-import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Generated;
-import org.greenrobot.greendao.annotation.Id;
-
 import java.text.Normalizer;
 import java.util.Objects;
 
-@Entity
 public class SmsMsg implements Parcelable {
 
-    @Id(autoincrement = true)
     @SerializedName("id")
     private Long id;
 
@@ -112,7 +106,6 @@ public class SmsMsg implements Parcelable {
     public SmsMsg() {
     }
 
-    @Generated(hash = 1224986056)
     public SmsMsg(Long id, String sender, String body, long date, int subId) {
         this.id = id;
         this.sender = sender;
