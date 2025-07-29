@@ -35,9 +35,7 @@
 
 ### 使用方法：
 
-* 配置类：
-
-`src/main/java/com/xmhzj/xpForwardSmsMini/common/constant/ConfigConst.java`
+* 配置类：[ConfigConst.java](app%2Fsrc%2Fmain%2Fjava%2Fcom%2Fxmhzj%2FxpForwardSmsMini%2Fcommon%2Fconstant%2FConfigConst.java)
 
 * 需要先将其中的配置项修改为自己的配置信息，然后重新打包和签名 apk
 
