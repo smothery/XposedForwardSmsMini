@@ -36,12 +36,13 @@
 ### 使用方法：
 
 * 配置类：
-<code>
-src/main/java/com/xmhzj/xpForwardSmsMini/common/constant/ConfigConst.java
-</code>
+
+`src/main/java/com/xmhzj/xpForwardSmsMini/common/constant/ConfigConst.java`
 
 * 需要先将其中的配置项修改为自己的配置信息，然后重新打包和签名 apk
 
-* 如果不清楚每项配置的含义，可参考原版 XposedForwardSms 中的设置项。
+* 如果不清楚每项配置的含义，可参考原版 XposedForwardSms 中的设置项
 
-* 如果本地没有SDK环境，也可以使用 GitHub 的`Action`功能打包，相关配置已在 [workflows](.github%2Fworkflows) 中写好。然后下载到本地，使用`MT管理器`等工具对 apk 签名
+* 如果没有本地 SDK 环境，也可以使用 GitHub 的`Action`功能打包 apk，相关配置已在 [workflows](.github%2Fworkflows) 中写好
+
+* 之后下载 apk 到本地，使用`MT管理器`等工具对 apk 签名安装即可
