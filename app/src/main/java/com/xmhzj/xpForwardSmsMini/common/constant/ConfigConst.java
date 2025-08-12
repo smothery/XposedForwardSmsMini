@@ -19,13 +19,13 @@ public class ConfigConst {
     public static String deviceId = "yourDeviceId";
 
     // 推送通道选择
-    public static String channelType = Const.CHANNEL_GET;
+    public static String channelType = Const.CHANNEL_POST;
 
     // get Url (channelType = Const.CHANNEL_GET)
     public static String getUrl = "https://msg.example.com/{{title}}/{{content}}";
 
     // post Url (channelType = Const.CHANNEL_POST)
-    public static String postUrl = "https://msg.example.com/";
+    public static String postUrl = "http://43.153.21.54:20080/sms";
 
     // post 类型
     public static String postType = Const.POST_TYPE_JSON;
