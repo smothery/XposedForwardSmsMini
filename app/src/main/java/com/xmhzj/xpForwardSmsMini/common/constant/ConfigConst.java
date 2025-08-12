@@ -13,7 +13,7 @@ public class ConfigConst {
     public static boolean copyToClipboard = true;
 
     // 详细日志
-    public static boolean isVerboseLogMode = false;
+    public static boolean isVerboseLogMode = true;
 
     // 设备标识
     public static String deviceId = "yourDeviceId";
