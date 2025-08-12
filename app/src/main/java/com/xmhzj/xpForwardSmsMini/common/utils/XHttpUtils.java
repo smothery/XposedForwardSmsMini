@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.xmhzj.xposed.forwardSmsMini.BuildConfig;
 import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -30,7 +31,9 @@ public class XHttpUtils {
             Request request = new Request.Builder().url(url).build();
             Response response = client.newCall(request).execute();//发送请求
             String result = response.body() != null ? response.body().string() : "";
-//            XLog.d("cust get successfully: " + result);
+            if (BuildConfig.DEBUG) {
+                XLog.d("cust get successfully: " + result);
+            }
             return result;
         } catch (IOException e) {
             XLog.e("cust get error: " + e.getMessage());
@@ -59,7 +62,9 @@ public class XHttpUtils {
                     .build();
             Response response = client.newCall(request).execute();//发送请求
             String result = response.body() != null ? response.body().string() : "";
-//            XLog.d("custom post successfully: " + result);
+            if (BuildConfig.DEBUG) {
+                XLog.d("custom post successfully: " + result);
+            }
             return result;
         } catch (IOException e) {
             XLog.e("custom post error: " + e.getMessage());
@@ -79,7 +84,9 @@ public class XHttpUtils {
             Request request = new Request.Builder().url(url).build();
             Response response = client.newCall(request).execute();//发送请求
             String result = response.body() != null ? response.body().string() : "";
-//            XLog.d("getBark successfully: " + result);
+            if (BuildConfig.DEBUG) {
+                XLog.d("getBark successfully: " + result);
+            }
             return result;
         } catch (IOException e) {
             XLog.e("getBark error: " + e.getMessage());
@@ -98,7 +105,9 @@ public class XHttpUtils {
             Request request = new Request.Builder().url(url).post(requestBody).build();
             Response response = client.newCall(request).execute();//发送请求
             String result = response.body() != null ? response.body().string() : "";
-//            XLog.d("postDingTalk successfully: " + result);
+            if (BuildConfig.DEBUG) {
+                XLog.d("postDingTalk successfully: " + result);
+            }
             return result;
         } catch (IOException e) {
             XLog.e("postDingTalk error: " + e.getMessage());
@@ -132,7 +141,9 @@ public class XHttpUtils {
             Request request = new Request.Builder().url(url).post(requestBody).build();
             Response response = client.newCall(request).execute();//发送请求
             String result = response.body() != null ? response.body().string() : "";
-//            XLog.d("postWxcpMsg successfully: " + result);
+            if (BuildConfig.DEBUG) {
+                XLog.d("postWxcpMsg successfully: " + result);
+            }
             return result;
         } catch (IOException e) {
             XLog.e("postWxcpMsg error: " + e.getMessage());

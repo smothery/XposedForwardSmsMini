@@ -1,9 +1,11 @@
 package com.xmhzj.xpForwardSmsMini.xp.hook.sms;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.xmhzj.xpForwardSmsMini.common.action.CopyToClipboardAction;
 import com.xmhzj.xpForwardSmsMini.common.constant.ConfigConst;
 import com.xmhzj.xposed.forwardSmsMini.BuildConfig;
 import com.xmhzj.xpForwardSmsMini.common.action.entity.SmsMsg;
@@ -28,7 +30,7 @@ public class ForwardSmsWorker {
         mScheduledExecutor = Executors.newSingleThreadScheduledExecutor();
     }
 
-    public void parse() {
+    public void parse(Context context) {
         if (!ConfigConst.isEnabled) {
             XLog.i("xposedForwardSmsMini disabled, exiting");
             return;
@@ -60,13 +62,17 @@ public class ForwardSmsWorker {
         //过滤短信内容
         boolean filterFlag = true;
 
-        if(ConfigConst.filterEnable){
-            String filterKeywords = ConfigConst.filterKeywords;
-            if (StringUtils.isNotEmpty(filterKeywords)){
-                Matcher matcher = Pattern.compile(filterKeywords).matcher(smsMsg.getBody());
-                if (!matcher.find()) {
-                    filterFlag = false;
+        String filterKeywords = ConfigConst.filterKeywords;
+        if (StringUtils.isNotEmpty(filterKeywords)) {
+            Matcher matcher = Pattern.compile(filterKeywords).matcher(smsMsg.getBody());
+            if (matcher.find()) {
+                if (ConfigConst.copyToClipboard) {
+                    //拷贝到剪切板
+                    String keyword = matcher.group();
+                    new Thread(new CopyToClipboardAction(context, smsMsg, keyword)).start();
                 }
+            } else if (ConfigConst.filterEnable) {
+                filterFlag = false;
             }
         }
 

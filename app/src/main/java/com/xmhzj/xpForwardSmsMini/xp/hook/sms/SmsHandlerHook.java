@@ -1,6 +1,8 @@
 package com.xmhzj.xpForwardSmsMini.xp.hook.sms;
 
+import android.app.AndroidAppHelper;
 import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -174,6 +176,7 @@ public class SmsHandlerHook extends BaseHook {
     }
 
     private void beforeDispatchIntentHandler(XC_MethodHook.MethodHookParam param, int receiverIndex) {
+        Context context = AndroidAppHelper.currentApplication();
         Intent intent = (Intent) param.args[0];
         String action = intent.getAction();
 
@@ -186,7 +189,7 @@ public class SmsHandlerHook extends BaseHook {
         // 设置卡槽信息
         putPhoneIdAndSubIdExtra(param.thisObject, intent);
 
-        new ForwardSmsWorker(intent).parse();
+        new ForwardSmsWorker(intent).parse(context);
     }
 
     private void putPhoneIdAndSubIdExtra(Object inboundSmsHandler, Intent intent) {

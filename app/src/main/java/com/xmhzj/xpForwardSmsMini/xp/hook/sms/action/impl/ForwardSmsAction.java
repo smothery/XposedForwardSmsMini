@@ -9,6 +9,7 @@ import com.xmhzj.xpForwardSmsMini.common.constant.Const;
 import com.xmhzj.xpForwardSmsMini.common.utils.StringUtils;
 import com.xmhzj.xpForwardSmsMini.common.utils.XHttpUtils;
 import com.xmhzj.xpForwardSmsMini.common.utils.XLog;
+import com.xmhzj.xposed.forwardSmsMini.BuildConfig;
 
 /**
  * 记录验证码短信
@@ -16,12 +17,12 @@ import com.xmhzj.xpForwardSmsMini.common.utils.XLog;
 public class ForwardSmsAction extends RunnableAction {
 
     public ForwardSmsAction(SmsMsg smsMsg) {
-        super(smsMsg);
+        super(null, smsMsg, null);
     }
 
     @Override
     public Bundle action() {
-        forwardSmsMsg(mSmsMsg);
+        forwardSmsMsg(smsMsg);
         return null;
     }
 
@@ -61,7 +62,9 @@ public class ForwardSmsAction extends RunnableAction {
                 default:
                     break;
             }
-//            XLog.d("forward result: " + res);
+            if (BuildConfig.DEBUG) {
+                XLog.d("forward result: " + res);
+            }
         } catch (Exception e) {
             XLog.e("forward error: " + e.getMessage());
         }

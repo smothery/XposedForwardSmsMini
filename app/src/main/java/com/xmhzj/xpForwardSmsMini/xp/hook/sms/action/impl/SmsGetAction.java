@@ -20,7 +20,7 @@ public class SmsGetAction extends CallableAction {
     private Intent mSmsIntent;
 
     public SmsGetAction(SmsMsg smsMsg) {
-        super(smsMsg);
+        super(null, smsMsg, null);
     }
 
     public void setSmsIntent(Intent smsIntent) {
@@ -33,26 +33,22 @@ public class SmsGetAction extends CallableAction {
     }
 
     private Bundle getSmsMsg() {
-        mSmsMsg = SmsMsg.fromIntent(mSmsIntent);
-
-        String sender = mSmsMsg.getSender();
-        String msgBody = mSmsMsg.getBody();
+        smsMsg = SmsMsg.fromIntent(mSmsIntent);
+        String sender = smsMsg.getSender();
+        String msgBody = smsMsg.getBody();
         if (BuildConfig.DEBUG) {
             XLog.d("Sender: %s", sender);
             XLog.d("Body: %s", msgBody);
-        } else {
-            XLog.d("Sender: %s", StringUtils.escape(sender));
-            XLog.d("Body: %s", StringUtils.escape(msgBody));
         }
 
         if (TextUtils.isEmpty(sender) || TextUtils.isEmpty(msgBody)) {
             return null;
         }
 
-        mSmsMsg.setDate(System.currentTimeMillis());
+        smsMsg.setDate(System.currentTimeMillis());
 
         Bundle bundle = new Bundle();
-        bundle.putParcelable(SMS_MSG, mSmsMsg);
+        bundle.putParcelable(SMS_MSG, smsMsg);
 
         return bundle;
     }

@@ -1,5 +1,6 @@
 package com.xmhzj.xpForwardSmsMini.common.action;
 
+import android.content.Context;
 import com.xmhzj.xpForwardSmsMini.common.action.entity.SmsMsg;
 
 /**
@@ -7,8 +8,8 @@ import com.xmhzj.xpForwardSmsMini.common.action.entity.SmsMsg;
  */
 public abstract class RunnableAction extends CallableAction implements Runnable {
 
-    public RunnableAction(SmsMsg smsMsg) {
-        super(smsMsg);
+    public RunnableAction(Context context, SmsMsg smsMsg, String keyword) {
+        super(context, smsMsg, keyword);
     }
 
     @Override
